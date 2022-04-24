@@ -13,8 +13,18 @@ $("button").on("click", function () {
 
 const renderApts = function (apartments) {
     $("#results").empty()
-    console.log(apartments) //array of apartments to render
-    //Your code goes here.
+
+    if(apartments.length == 0){
+        const noSource = $('#not-available').html();
+        const noTemplate = Handlebars.compile(noSource)
+        let noHTML = noTemplate({text: "No apartments available!"})
+        $('#results').append(noHTML)
+    }
+
+    const source = $('#template').html();
+    const template = Handlebars.compile(source)
+    let newHTML= template({apartments})
+    $('#results').append(newHTML)
 }
 
 renderApts(apartments) //renders apartments when page loads

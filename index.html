@@ -35,9 +35,37 @@
 
     <div id="results"></div>
 
-    <!-- Your Code Here -->
-    <!-- You should start doing handlebar stuff here -->
-    <!-- Your Code Here -->
+    <script id="template" type="text/x-handlebars-template">
+      {{#each apartments}}
+        <div class="result">
+            <img src="{{img}}">
+            <div class="label"></div>
+            {{#if parking}}   
+                <div class="l-park">Parking: </div>
+                <div class="parking">available</div>
+            {{/if}}
+            <div class="l-rooms">Rooms: </div>
+            <div class="rooms">{{rooms}}</div>
+            <div class="l-price">price: </div>
+            <div class="price">{{price}}</div>
+            <div class="l-addr">address: </div>
+            <div class="address">{{address}}</div>
+            {{#if immediate}}
+            <div class="l-contact">Contact us:
+                <div class="cont">
+                    {{contactDetails.name}} - {{contactDetails.email}}
+                </div>
+            </div>
+            {{/if}}
+            <div class="l-fr">features: </div>
+            <div class="feat">{{features}}</div>
+        </div>
+      {{/each}}
+    </script>
+
+    <script id="not-available" type="text/x-handlebars-template">
+          <div class="no-match">{{text}}</div>
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
